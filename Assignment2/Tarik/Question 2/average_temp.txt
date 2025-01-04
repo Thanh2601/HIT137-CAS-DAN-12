@@ -1,0 +1,5 @@
+Average Temperatures by Season:
+Summer: 32.1C
+Autumn: 27.3C
+Winter: 21.1C
+Spring: 27.4C

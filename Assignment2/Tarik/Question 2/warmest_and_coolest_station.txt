@@ -1,0 +1,5 @@
+Warmest Stations:
+MARBLE-BAR-1992: 47.1C
+
+Coolest Stations:
+CABRAMURRA-SMHEA-AWS-1986: 3.8C
