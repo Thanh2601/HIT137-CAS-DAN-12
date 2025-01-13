@@ -1,25 +1,28 @@
 import turtle
 
 # Recursive function to draw the tree
-def draw_tree(t, branch_length, angle_left, angle_right, depth, reduction_factor):
-    if depth == 0:
+def draw_tree(t, branch_length, angle_left, angle_right, depth, reduction_factor, width):
+    if depth == 0 or branch_length < reduction_factor:
         return
     if depth == recursion_depth:
         t.color("brown")  # Main trunk is brown
     else:
         t.color("green")  # All other branches are green
+        width = width
+
+    t.pensize(width)
     # Draw the current branch
     t.forward(branch_length)
-
+    
     # Draw the left branch
     t.left(angle_left)
-    draw_tree(t, branch_length * reduction_factor, angle_left, angle_right, depth - 1, reduction_factor)
+    draw_tree(t, branch_length * reduction_factor, angle_left, angle_right, depth - 1, reduction_factor, width * 0.6)
     
     # Return to the current branch
     t.right(angle_left + angle_right)
     
     # Draw the right branch
-    draw_tree(t, branch_length * reduction_factor, angle_left, angle_right, depth - 1, reduction_factor)
+    draw_tree(t, branch_length * reduction_factor, angle_left, angle_right, depth - 1, reduction_factor, width * 0.6)
     
     # Return to the trunk
     t.left(angle_right)
@@ -28,6 +31,7 @@ def draw_tree(t, branch_length, angle_left, angle_right, depth, reduction_factor
 # Function to set up the turtle
 def setup_turtle():
     screen = turtle.Screen()
+    screen.title("Question 3 - Draw tree")
     screen.bgcolor("white")
     t = turtle.Turtle()
     t.left(90)  # Start by drawing upwards
@@ -52,7 +56,7 @@ def main():
     t.pendown()
  
     # Start drawing the tree
-    draw_tree(t, starting_branch_length, angle_left, angle_right, recursion_depth, reduction_factor)
+    draw_tree(t, starting_branch_length, angle_left, angle_right, recursion_depth, reduction_factor, 10)
 
     # Finish the drawing
     turtle.done()
