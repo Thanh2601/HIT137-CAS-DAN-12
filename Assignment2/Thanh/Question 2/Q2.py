@@ -37,23 +37,24 @@ def the_largest_range_station(files):
         temperature_range = float(max(temparatures)) - float(min(temparatures))
         range_of_temperature[station] = float(temperature_range)
 
-    the_largest_range_station = max(range_of_temperature)
+    the_largest_range_station = max(range_of_temperature, key=range_of_temperature.get)
     
     return the_largest_range_station, range_of_temperature[the_largest_range_station]
 
 def the_warmest_and_coolest_stations(files):
-    avg_temperature_of_stations = {}
+    max_temperature_of_stations = {}
+    min_temperature_of_stations = {}
     for row in files:
         station = row[0]  
         temparatures = row[4:]
         temparatures = [float(temp) for temp in temparatures]
-        avg_temperature_of_stations[station] = float(sum(temparatures)) / len(temparatures)
-        
+        max_temperature_of_stations[station] = max(temparatures)
+        min_temperature_of_stations[station] = min(temparatures)
 
-    the_warmest_station = max(avg_temperature_of_stations)
-    the_coolest_station = min(avg_temperature_of_stations)
+    the_warmest_station = max(max_temperature_of_stations, key=max_temperature_of_stations.get)
+    the_coolest_station = min(min_temperature_of_stations, key=min_temperature_of_stations.get)
     
-    return the_warmest_station, avg_temperature_of_stations[the_warmest_station], the_coolest_station, avg_temperature_of_stations[the_coolest_station]
+    return the_warmest_station, max_temperature_of_stations[the_warmest_station], the_coolest_station, min_temperature_of_stations[the_coolest_station]
 
 def process_temperature_data(directory):
     temperature_data = []
@@ -72,7 +73,6 @@ def main():
     directory = 'temperature_data'  # Folder containing all the CSV files
     folder = process_temperature_data(directory)
     
-    # Task 1: Calculate monthly average temperature
     seasonal_avg = seasonal_average_result(folder, months)
     with open('average_temp.txt', 'w', encoding="utf-8") as file:
         file.write('Average temperature for each season:\n')
