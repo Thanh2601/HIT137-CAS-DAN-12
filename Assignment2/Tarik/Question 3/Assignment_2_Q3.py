@@ -35,6 +35,15 @@ def draw_tree(t, branch_len, left_angle, right_angle, reduction_factor, depth, w
     t.setheading(heading)
     t.pendown()
 
+#Enter the parameters
+left_angle = float(input("Enter the left angle: "))
+right_angle = float(input("Enter the right angle: "))
+branch_len = float(input("Enter the initial branch length: "))
+depth = int(input("Enter the depth of branching: "))
+reduction = float(input("Enter the reduction factor for branch length: "))
+initial_width = float(input("Enter the initial branch width: "))
+
+
 # Set up the screen
 screen = turtle.Screen()
 screen.title("Assignment_2_Q3 Tree")
@@ -48,12 +57,6 @@ t.penup()
 t.setpos(0, -200)
 t.pendown()
 
-left_angle = 20    # 20 degrees left
-right_angle = 25   # 25 degrees right
-branch_len = 100   # 100 pixels initial length
-depth = 5         # branch out 5 times
-reduction = 0.7    # 70% of parent branch
-initial_width = 10  # Reduced from 15 to 10 for thinner overall branches
 
 draw_tree(t, branch_len, left_angle, right_angle, reduction, depth, initial_width)
 
