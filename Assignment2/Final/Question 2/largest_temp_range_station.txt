@@ -1,0 +1,6 @@
+Stations with Largest Temperature Range:
+WYALONG-POST-OFFICE-2005
+Minimum Temperature: 15.9C
+Maximum Temperature: 36.5C
+Temperature Range: 20.6C
+
