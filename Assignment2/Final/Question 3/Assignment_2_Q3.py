@@ -41,8 +41,7 @@ right_angle = float(input("Enter the right angle: "))
 branch_len = float(input("Enter the initial branch length: "))
 depth = int(input("Enter the depth of branching: "))
 reduction = float(input("Enter the reduction factor for branch length: "))
-initial_width = float(input("Enter the initial branch width: "))
-
+initial_width = 10
 
 # Set up the screen
 screen = turtle.Screen()
